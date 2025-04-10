@@ -1,0 +1,286 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% John Doe's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Shaurya Thapliyal}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    \href{tel:+91 8287534456}{
+      \raisebox{-0.05\height} \faPhone\ +91 8287534456} ~ | ~
+    \href{mailto:shauryat.22703@gmail.com}{
+      \raisebox{-0.15\height} \faEnvelope\ shauryat.22703@gmail.com} ~ | ~
+    \href{https://linkedin.com/in/shaurya-thapliyal/}{
+      \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/shaurya-thapliyal} ~ | ~
+    \href{https://github.com/larrikin-coder}{
+      \raisebox{-0.15\height} \faGithub\ github.com/larrikin-coder}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+
+  \tinysection{Summary}
+  
+Junior Year Computer Science Engineering Student, highly proficient in Python and MLOps seeking to apply technical skills in a collaborative environment. With fast-learning ability and the eagerness to learn new technologies i am able to write clean, efficient and result-driven code.
+
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+      \item[\textbf{Languages}] Python C++ Javascript
+      \item[\textbf{Framework}] Express.js Node.js React.js
+      \item[\textbf{OS}] Windows Mac Ubuntu
+      \item[\textbf{MLOps}] Langchain Kubeflow HuggingFace
+      \item[\textbf{Libraries}] OpenCV Numpy Pandas Flask Django
+      \item[\textbf{ML Libraries}] Tensorflow Keras SciPy Cuda Scikit-learn 
+    \end{itemize}
+  \end{multicols}
+
+  \section{Experience}
+
+  \headingBf{ONGC}{Jul 2024 -- Aug 2024}
+  \headingIt{Software Developer Intern (Machine Learning)}{}
+  \begin{resume_list}
+    \item Preprocessed and optimized the Flanv2-100k dataset by filtering and deduplication, reducing it to 1,000 samples. Trained the LLaMA2-7B model using this refined dataset, enhancing model efficiency and accuracy.
+    \item HuggingFace Repository of filtered and deduped dataset:\href{https://huggingface.co/datasets/larrikin7/shaurya-flanV2-100k-filtered}{ flanV2-100k-filtered}
+    \item HuggingFace Repository of llama2-1k trained dataset:\href{https://huggingface.co/datasets/larrikin7/shaurya-llama2-1k}{ llama2-1k}
+  \end{resume_list}
+
+  \section{Education}
+
+  \headingBf{Vellore Institute Of Technology, Bhopal}{CGPA: 8.4} % Note: Adding year(s) exposes an implied age
+  \headingIt{Bachelors in Computer Science with spl. in AI and ML}{Oct 2022 - present}
+  % \headingIt{Minors: Networking ; Network Security}{}
+  \headingBf{Delhi Public School, Indirapuram}{XIIth CGPA: 8.8}
+  \headingBf{Delhi Public School, Indirapuram}{Xth CGPA: 9.2}
+
+
+  \vspace{5pt}
+  \headingBf{Certifications}{}
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=0px, parsep=1pt]
+      \item Applied Machine Learning in Python (Michigan University) [Coursera]
+      \item The Ultimate 2024 Full Stack web development Bootcamp [Udemy]
+      \item Python Essentials [Vityarthi]
+      \item Python (Basic) [HackerRank]
+      \item CSS (Basic) [HackerRank]
+      \item Privacy and Security in Online Social Media [Nptel]
+    \end{itemize}
+  \end{multicols}
+
+  \section{Achievements}
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=0px,parsep=1pt]
+      \item NTSE Stage 1 Qualified
+      \item NSUT Hackathon - Rank 5
+      \item 5 Star in Python (HackerRank)
+      \item 4 Star in Problem Solving (HackerRank)
+      \item 2 Star in SQL (HackerRank)
+      \item 100 Days of Code (Leetcode) - Ongoing
+    \end{itemize} 
+  \end{multicols}
+
+  \section{Projects}
+
+  \headingBf{Saraswati Chatbot}{}
+  \begin{resume_list}
+    \item A web-based chatbot utilizing Large Language Models (LLM) to provide contextually relevant and accurate responses to user prompts.
+    \item We boosted the Llama 2 model's token size by 1,000 tokens over ChatGPT 3.5's 4,096-token limit, achieving a 24.4\% increase.
+    \item GitHub Repository: \href{https://github.com/larrikin-coder/Saraswati-AI.git}{Saraswati-AI}
+   
+  \end{resume_list}
+
+  \headingBf{iNotebook}{}
+  \begin{resume_list}
+    \item A MERN stack web application designed for note-taking.
+    \item GitHub Repository: \href{https://github.com/larrikin-coder/iNotebook.git}{iNotebook}    
+  \end{resume_list}
+
+  \headingBf{Pandora}{}
+  \begin{resume_list}
+    \item A desktop assistant application designed to automate daily tasks such as sending emails and conducting Google searches, enhancing productivity and efficiency.
+    \item GitHub Repository: \href{https://github.com/larrikin-coder/Pandora-Ai.git}{Pandora}
+  \end{resume_list}
+
+  \headingBf{Bibliotheca}{}
+  \begin{resume_list}
+    \item Built a minimalistic language-learning app that allows word translation, meaning lookup, and semantic analysis using offline data storage.
+    \item GitHub Repository: \href{https://github.com/larrikin-coder/Bibliotheca.git}{Bibliotheca}
+  \end{resume_list}
+
+
+\end{document}
+
